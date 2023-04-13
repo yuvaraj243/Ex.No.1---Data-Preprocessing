@@ -1,9 +1,10 @@
 # Ex.No.1---Data-Preprocessing
+
 ## AIM:
 
 To perform Data preprocessing in a data set downloaded from Kaggle
 
-##REQUIPMENTS REQUIRED:
+## REQUIPMENTS REQUIRED:
 Hardware – PCs
 Anaconda – Python 3.7 Installation / Google Colab /Jupiter Notebook
 
@@ -24,18 +25,59 @@ Another aspect is that the data set should be formatted in such a way that more 
 
 
 ## ALGORITHM:
-Importing the libraries
-Importing the dataset
-Taking care of missing data
-Encoding categorical data
-Normalizing the data
-Splitting the data into test and train
+
+1.Importing the libraries
+
+2.Importing the dataset
+
+3.Taking care of missing data
+
+4.Encoding categorical data
+
+5.Normalizing the data
+
+6.Splitting the data into test and train
 
 ## PROGRAM:
-/Write your code here/
-
+```
+Register number:212221220022
+Name: T.Jayapriya
+import pandas as pd
+df=pd.read_csv("/content/Churn_Modelling.csv")
+df.head()
+df.isnull().sum()
+df.drop(["RowNumber","Age","Gender","Geography","Surname"],inplace=True,axis=1)
+print(df)
+x=df.iloc[:,:-1].values
+y=df.iloc[:,-1].values
+print(x)
+print(y)
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+df1 = pd.DataFrame(scaler.fit_transform(df))
+print(df1)
+from sklearn.model_selection import train_test_split
+xtrain,ytrain,xtest,ytest=train_test_split(x,y,test_size=0.2,random_state=2)
+print(xtrain)
+print(len(xtrain))
+print(xtest)
+print(len(xtest))
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+df1 = sc.fit_transform(df)
+print(df1)
+```
 ## OUTPUT:
-/ Show the result/
 
-## RESULT
-/Type your result here/
+![WhatsApp Image 2022-09-24 at 8 25 35 PM](https://user-images.githubusercontent.com/114279259/192104970-a6db15a9-07af-42d9-a0ea-eed15e75dbaa.jpeg)
+
+![WhatsApp Image 2022-09-24 at 8 25 36 PM](https://user-images.githubusercontent.com/114279259/192104980-64dae628-bda1-4d81-b51e-10ed29cee4dc.jpeg)
+
+![WhatsApp Image 2022-09-24 at 8 25 36 PM (1)](https://user-images.githubusercontent.com/114279259/192104988-a45129d8-e632-444f-96b0-0cfa511dbab0.jpeg)
+
+![WhatsApp Image 2022-09-24 at 8 25 36 PM (2)](https://user-images.githubusercontent.com/114279259/192104991-4449cfdd-dc6d-46d2-8ca9-df3b4fe8e5f1.jpeg)
+
+
+## RESULT :
+
+Thus the above program for standardizing the given data was implemented successfully
